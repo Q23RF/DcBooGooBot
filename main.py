@@ -9,8 +9,6 @@ from keep_alive import keep_alive
 keep_alive()
 
 token = os.environ['token']
-#client = discord.Client(intents=discord.Intents.default())
-id = 1075803654667382907
 bot = commands.Bot(command_prefix='!',
                    activity=None,
                    status=discord.Status.idle,
@@ -35,7 +33,7 @@ async def boogoo(ctx):
 
     stopped = False
     await bot.change_presence(activity=discord.Game(name="BooGoo"))
-    channel = bot.get_channel(id)
+    channel = ctx.author.voice.channel
     print("boogoo!")
     now = time.gmtime()
     interval = 1
@@ -53,7 +51,7 @@ async def boogoo(ctx):
 
     while not stopped:
         try:
-            message = await bot.wait_for("message", check=check, timeout=0.9)
+            message = await bot.wait_for("message", check=check, timeout=0.8)
             stopped = True if message.content.lower() == "!stop" else False
         except asyncio.TimeoutError:
             now = time.gmtime()
