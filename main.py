@@ -8,10 +8,10 @@ import asyncio
 from keep_alive import keep_alive
 
 keep_alive()
-vids = ["ATEEZ(에이티즈) WANTEEZ EP.9 난 핏줄이 바늘을 피해", "[PURPLE KISS - Intro : Save Me + Sweet Juice] Comeback Stage | #엠카운트다운 EP.784 | Mnet 230216 방송", "[XH's Rock The World] Ep.10 Childhood Innocence Ruined🙀 Lilac Classmates' Not-so-easy School Days🏫", 'ATEEZ - Dazzling Light, Berlin Day 1 14.02.2023, Mercedes Benz Arena, World Tour "Break The Wall"']
+vids = ['ATEEZ(에이티즈) WANTEEZ EP.9 난 핏줄이 바늘을 피해', '[PURPLE KISS - Intro : Save Me + Sweet Juice] Comeback Stage | #엠카운트다운 EP.784 | Mnet 230216 방송', '원한 컬렉터의 충격적인 최후..🩸 역대급 아이돌판 ☠추리게임☠ | 원어스(ONEUS) | 매운맛을 보여주마3 EP.3 | Same Scent | Show Me The MWM 3', '(4k) ATEEZ (에이티즈) in LA “Pirate King”']
 token = os.environ['token']
 bot = commands.Bot(command_prefix='!',
-				   activity=discord.Activity(type=discord.ActivityType.watching, name=vids[random.randint(0, len(vids))]),
+				   activity=discord.Activity(type=discord.ActivityType.watching, name=vids[random.randint(0, len(vids)-1)]),
 				   status=discord.Status.idle,
                    intents=discord.Intents.all())
 
