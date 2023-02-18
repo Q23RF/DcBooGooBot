@@ -8,7 +8,7 @@ import asyncio
 from keep_alive import keep_alive
 
 keep_alive()
-vids = ['ATEEZ(에이티즈) WANTEEZ EP.9 난 핏줄이 바늘을 피해', '[PURPLE KISS - Intro : Save Me + Sweet Juice] Comeback Stage | #엠카운트다운 EP.784 | Mnet 230216 방송', '원한 컬렉터의 충격적인 최후..🩸 역대급 아이돌판 ☠추리게임☠ | 원어스(ONEUS) | 매운맛을 보여주마3 EP.3 | Same Scent | Show Me The MWM 3', '(4k) ATEEZ (에이티즈) in LA “Pirate King”']
+vids = ["World’s Largest Cuckoo Clock In The Black Forest Of Germany | Europe To The Maxx", "Meine Schwarzwälder Kuckucksuhren - My Black Forest cuckoo clocks", "23 cuckoo bird calls in 50 seconds - Cuckoo Clock 'Coo Coo' Compilation"]
 token = os.environ['token']
 bot = commands.Bot(command_prefix='!',
 				   activity=discord.Activity(type=discord.ActivityType.watching, name=vids[random.randint(0, len(vids)-1)]),
@@ -31,11 +31,15 @@ async def test(ctx):
 async def boogoo(ctx):
 	def check(m):
 		return m.author == ctx.author and m.channel == ctx.channel
-
 	stopped = False
-	await bot.change_presence(activity=discord.Game(name="BooGoo"))
-	channel = ctx.author.voice.channel
-	print("boogoo!")
+	try:
+		channel = ctx.author.voice.channel
+		print("boogoo!")
+		await bot.change_presence(activity=discord.Game(name="BooGoo"))
+
+	except:
+		await ctx.send("請先加入語音頻道")
+
 	now = time.gmtime()
 	interval = 1
 	if now[4] % interval == 0 and now[5] == 0:
